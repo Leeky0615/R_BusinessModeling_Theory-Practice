@@ -1,14 +1,18 @@
-#아침식사용 시리얼 예제 데이터를 읽어들인다.
-cereal.df<-read.csv("cereals.csv")
-View(cereal.df)
-head(cereal.df)
+# 사전작업
+cereals.df<-read.csv("cereals.csv")
+library(ggplot2)
 
 #1-(1)번 
 #str함수와 summary함수를 사용하여 각 변수들의 data를 탐색한다. 
-str(cereal.df)
-summary(cereal.df)
-#수치형변수(numerical variable): calories, protein, fat, sodium, fiber, carbo, sugars, shelf, potass, vitamins, weight,cups,rating- data type이 int 또는 num이고 summary함수를 사용하여 최소값, 1사분위값 등을 알 수 있다.
-#범주형변수(categorical variable)는 data type이 chr로 나타나고 순서형변수(ordinal variable)와 명목형변수(nominal variable)로 구분된다. 
+str(cereals.df)
+summary(cereals.df)
+# Numerical Variable :: 양적/수치적 변수
+#  - Discrete Data
+#    -> calories, protein, fat, sodium, fiber, carbo, sugars, shelf, potass, vitamins, weight, cups, rating
+#  - Continous Data
+#    -> calories, protein, fat, sodium, fiber, carbo, sugars, shelf, potass, vitamins, weight, cups, rating
+
+# Categorical variable ::  data type이 chr로 나타나고 순서형변수(ordinal variable)와 명목형변수(nominal variable)로 구분된다. 
 #순서형변수(ordinal variable): shelf
 #명목형변수(nominal variable): name, mfr, type
 

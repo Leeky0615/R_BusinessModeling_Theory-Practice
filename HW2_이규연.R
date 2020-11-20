@@ -6,17 +6,17 @@ library(ggplot2)
 View(cereals.df)
 str(cereals.df)
 # Numerical Variable :: 양적/수치적 변수
-#    -> calories, protein, fat, sodium, fiber, carbo, sugars, potass, weight, cups, vitamins, rating, shelf
+#    -> calories, protein, fat, sodium, fiber, carbo, sugars, potass, weight, cups, vitamins, rating
 
 # Categorical Variable :: 범주형 변수
 #  - Nominal Variable :: 명목형 변수
 #    -> name, mfr, type, shelf
 #  - Ordinal Variable :: 순서형 변수
-#    -> vitamins, rating
+#    -> rating
 
 # 1-(2)
-# remove categorical variables 
-cereals.numerical.df<-(cereals.df[,-c(1:3, 12:13, 16)])
+# 양적 변수.
+cereals.numerical.df <- (cereals.df[,-c(1:3, 13)])
 str(cereals.numerical.df)
 
 # calculate MEAN, MEDIAN, MIN, MAX, STDEV
@@ -29,8 +29,8 @@ data.frame(mean=sapply(cereals.numerical.df, mean, na.rm=TRUE),
 
 # 1-(3)
 # histogram for each numerical variables
-par(mfrow=c(2,5))
-for(i in 1:10){
+par(mfrow=c(3,4))
+for(i in 1:12){
   hist(cereals.numerical.df[[i]], xlab = colnames(cereals.numerical.df)[i], main = paste('hist_',colnames(cereals.numerical.df)[i]))
 }
 # (a) : fiber
@@ -43,13 +43,14 @@ CV
 
 # (b) : fiber
 # 왜도 : 치우쳐진 정도.
+# vitamins가 가장 크지만 양적 변수라고 보기 어렵기 때문에 fiber의 치우쳐진 정도가 가장 크다.
 install.packages("moments")
 library(moments)
 skewness(na.omit(cereals.numerical.df))
 
 # (c) : fat, carbo, sugars 제외 모든 변수에 극단값이 존재한다.
-par(mfrow=c(2,5))
-for(i in 1:10){
+par(mfrow=c(3,4))
+for(i in 1:12){
   boxplot(cereals.numerical.df[[i]], xlab = colnames(cereals.numerical.df)[i], main = paste('boxplot_',colnames(cereals.numerical.df)[i]))
 }
 
